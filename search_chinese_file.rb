@@ -10,7 +10,8 @@ for i in 104..113
         file_lines = []
 
         File.open(file).each_with_index do |line, index|
-            hans = line.scan(/\p{Han}/)
+            # 找尋 code 裡面含有中文的，排除註解中文的
+            hans = line.scan(/^(?!.*\/\/).*\p{Han}.*$/)
 
             if hans.count != 0
                 file_lines.push(index)
