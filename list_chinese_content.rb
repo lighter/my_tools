@@ -1,9 +1,11 @@
 # 找尋檔案中有中文字的
-@base_lang_file = [PATH_1, PATH_2, PATH_3]
+@base_lang_file = ['/Users/willy/work/ocm-frontend/application/language/ocm-frontend-i18n/common_lang/zh-Hans.php',
+                  '/Users/willy/work/ocm-frontend/application/language/ocm-frontend-i18n/gamelist_lang/zh-Hans.php',
+                  '/Users/willy/work/ocm-frontend/application/language/ocm-frontend-i18n/result_code_lang/zh-Hans.php']
 
 site = "ocm-site-#{ARGV[0]}"
 file_name = ARGV[1] #'js/scriptM.js'
-file_path = "SITE_PATH"
+file_path = "/Users/willy/work/ocm-frontend/#{site}/#{file_name}"
 
 def try_to_find_php_lang_key(word)
     finded = false

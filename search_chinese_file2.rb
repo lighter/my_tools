@@ -13,9 +13,12 @@ def open_file_list_chinese(files)
 
             File.open(file).each_with_index do |line, index|
                 # 找尋 code 裡面含有中文的，排除註解中文的
-                hans = line.scan(/^(?!.*\<\!).*\p{Han}.*$/)
+                hans = line.scan(/^(?!.*\<\!)(?!.*\/\/).*\p{Han}.*$/)
 
-                if hans.count != 0
+                # permission
+                per = line.scan(/\$this->checkPermission/)
+
+                if hans.count != 0 && per.count == 0
                     file_lines.push(index)
                 end
             end
@@ -31,12 +34,10 @@ def open_file_list_chinese(files)
 end
 
 # 找尋檔案中有中文字的
-for i in 113..113
-    site = "ocm-site-#{i}"
-    path = "/Users/willy/work/ocm-frontend/#{site}/views/pages/*";
 
-    # files = Dir[path + '*'].select{ |f| File.file? f }
+    path = "/Users/willy/work/gti-web/gti-manage/resources/assets/js/*";
+
     files = Dir[path + '*']
 
     open_file_list_chinese(files)
-end
+

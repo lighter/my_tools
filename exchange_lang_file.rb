@@ -1,6 +1,6 @@
 require 'fileutils'
-path = "SOURCE_PATH"
-target_path = "TARGET_PATH"
+path = "/Users/willy/work/ocm-frontend/application/language/"
+target_path = "/Users/willy/work/ocm-frontend/application/language/ocm-frontend-i18n/"
 
 folders = Dir[path + '*'].select{ |f| !File.file? f }
 
